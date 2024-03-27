@@ -1,5 +1,8 @@
 SHELL := bash
-
+PNPM := $(shell command -v pnpm 2> /dev/null || echo "npm")
+ifndef PNPM
+	PNPM := pnpm
+endif
 RUST_FILES=$(shell find v86/src/rust/ -name '*.rs') \
 	   v86/src/rust/gen/interpreter.rs v86/src/rust/gen/interpreter0f.rs \
 	   v86/src/rust/gen/jit.rs v86/src/rust/gen/jit0f.rs \
@@ -22,13 +25,13 @@ public/config.json:
 
 build/bootstrap: package.json server/package.json
 	mkdir -p build/lib
-	npm i
-	cd server; npm i
+	$(PNPM) i
+	cd server; $(PNPM) i
 	make hooks
 	>build/bootstrap
 
 build/nohost-sw.js:
-	cd nohost; npm i; npm run build; cp -r dist/* ../build/
+	cd nohost; $(PNPM) i; $(PNPM) run build; cp -r dist/* ../build/
 
 build/libcurl.mjs: build/bootstrap
 	cp node_modules/libcurl.js/libcurl.mjs build/; cp node_modules/libcurl.js/libcurl.wasm build/
@@ -78,7 +81,7 @@ build/lib/v86.wasm: $(RUST_FILES) v86/build/softfloat.o v86/build/zstddeclib.o v
 build/dreamland:
 	mkdir -p build/dreamland
 	git clone https://github.com/MercuryWorkshop/dreamlandjs.git dreamland.tmp --depth 1
-	cd dreamland.tmp; npm i; npx rollup -c -f iife 
+	cd dreamland.tmp; $(PNPM) i; npx rollup -c -f iife 
 	cp dreamland.tmp/dist/js.js build/dreamland/js.js
 	cp dreamland.tmp/dist/js.js.map build/dreamland/js.js.map
 	cp dreamland.tmp/dist/css.js build/dreamland/css.js

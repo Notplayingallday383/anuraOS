@@ -5,6 +5,9 @@ settings:
     excludeLinksFromLockfile: false
 
 dependencies:
+    "@mercuryworkshop/bare-mux":
+        specifier: ^1.0.5
+        version: 1.0.5
     "@tomphttp/bare-server-node":
         specifier: ^2.0.1
         version: 2.0.1
@@ -32,6 +35,12 @@ dependencies:
     fs-readdir-recursive:
         specifier: ^1.1.0
         version: 1.1.0
+    idb-keyval:
+        specifier: ^6.2.1
+        version: 6.2.1
+    libcurl.js:
+        specifier: ^0.6.6
+        version: 0.6.7
     onchange:
         specifier: ^7.1.0
         version: 7.1.0
@@ -49,15 +58,18 @@ dependencies:
         version: 5.0.4
 
 devDependencies:
-    "@mercuryworkshop/alicejs":
-        specifier: ^1.2.1
-        version: 1.2.1
     "@types/node":
         specifier: ^20.5.9
         version: 20.10.6
+    "@types/wicg-file-system-access":
+        specifier: ^2023.10.4
+        version: 2023.10.5
+    dreamland:
+        specifier: ^0.0.5
+        version: 0.0.5
     prettier:
-        specifier: ^3.0.0
-        version: 3.1.1
+        specifier: 3.2.4
+        version: 3.2.4
 
 packages:
     /@aashutoshrathi/word-wrap@1.2.6:
@@ -156,12 +168,15 @@ packages:
             }
         dev: false
 
-    /@mercuryworkshop/alicejs@1.2.1:
+    /@mercuryworkshop/bare-mux@1.0.5:
         resolution:
             {
-                integrity: sha512-44EIBl6T2xvi938ig2ogT5ANGnhlw6gG65wRP+uvLWgfxfxj+lRakWighLsGd1Wk3CM7ignWij8S3lyg982W8w==,
+                integrity: sha512-5czcsWISUCrN49diTuF/8WXZUCyoWHn90Ea+gLhVWKGUTyJzPAG5gTVZ77rMcQYewSuSDA1WVPaF0n79ciL5Gg==,
             }
-        dev: true
+        dependencies:
+            "@types/uuid": 9.0.8
+            uuid: 9.0.1
+        dev: false
 
     /@nodelib/fs.scandir@2.1.5:
         resolution:
@@ -236,6 +251,20 @@ packages:
                 integrity: sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==,
             }
         dev: false
+
+    /@types/uuid@9.0.8:
+        resolution:
+            {
+                integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==,
+            }
+        dev: false
+
+    /@types/wicg-file-system-access@2023.10.5:
+        resolution:
+            {
+                integrity: sha512-e9kZO9kCdLqT2h9Tw38oGv9UNzBBWaR1MzuAavxPcsV/7FJ3tWbU6RI3uB+yKIDPGLkGVbplS52ub0AcRLvrhA==,
+            }
+        dev: true
 
     /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.13.0)(typescript@5.0.4):
         resolution:
@@ -922,6 +951,13 @@ packages:
             }
         engines: { node: ">=12" }
         dev: false
+
+    /dreamland@0.0.5:
+        resolution:
+            {
+                integrity: sha512-yUPe3ldjkouWck46D3vrqcauxo7jIXcFPawLYByFzK5rchcNDugn0Owc+vGlNfkKgIwD8Hw+e6dGlvxnH8A+ow==,
+            }
+        dev: true
 
     /ee-first@1.1.1:
         resolution:
@@ -1613,6 +1649,13 @@ packages:
             safer-buffer: 2.1.2
         dev: false
 
+    /idb-keyval@6.2.1:
+        resolution:
+            {
+                integrity: sha512-8Sb3veuYCyrZL+VBt9LJfZjLUPWVvqn8tG28VqYNFCo43KHcKuq+b4EiXGeuaLAQWL2YmyDgMp2aSpH9JHsEQg==,
+            }
+        dev: false
+
     /ignore@5.3.0:
         resolution:
             {
@@ -1802,6 +1845,13 @@ packages:
         dependencies:
             prelude-ls: 1.2.1
             type-check: 0.4.0
+        dev: false
+
+    /libcurl.js@0.6.7:
+        resolution:
+            {
+                integrity: sha512-dYFrLYBGjTUMzBk1ePcyS2trxc04DwdMuvj88NRSxddRg+AnwHlCp3YH6NnP6kufBCPnEBF3Vjz1OMQGF5Q/DQ==,
+            }
         dev: false
 
     /lilconfig@3.0.0:
@@ -2199,10 +2249,10 @@ packages:
         engines: { node: ">= 0.8.0" }
         dev: false
 
-    /prettier@3.1.1:
+    /prettier@3.2.4:
         resolution:
             {
-                integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==,
+                integrity: sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==,
             }
         engines: { node: ">=14" }
         hasBin: true
@@ -2735,6 +2785,14 @@ packages:
                 integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==,
             }
         engines: { node: ">= 0.4.0" }
+        dev: false
+
+    /uuid@9.0.1:
+        resolution:
+            {
+                integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==,
+            }
+        hasBin: true
         dev: false
 
     /v8-compile-cache@2.4.0:
