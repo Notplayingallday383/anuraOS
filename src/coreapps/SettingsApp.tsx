@@ -146,7 +146,7 @@ class SettingsApp extends App {
                     <div class="sidebar-settings-item">
                         <span class="sidebar-settings-item-name">
                             <span class="material-symbols-outlined">build</span>
-                            <a href="#general">General</a>
+                            <a href="">General</a>
                         </span>
                     </div>
                     <div class="sidebar-settings-item">
@@ -154,7 +154,7 @@ class SettingsApp extends App {
                             <span class="material-symbols-outlined">
                                 memory
                             </span>
-                            <a href="#v86">x86</a>
+                            <a href="">x86</a>
                         </span>
                     </div>
                     <div class="sidebar-settings-item">
@@ -162,7 +162,7 @@ class SettingsApp extends App {
                             <span class="material-symbols-outlined">
                                 device_reset
                             </span>
-                            <a href="#reset">Reset</a>
+                            <a href="">Reset</a>
                         </span>
                     </div>
                 </div>
