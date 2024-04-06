@@ -5,6 +5,7 @@ class Taskbar {
         showBar: boolean;
         rounded: boolean;
         time: string;
+        wisp_icn: string;
         bat_icon: string;
     } = stateful({
         pinnedApps: [],
@@ -13,6 +14,7 @@ class Taskbar {
         rounded: true,
         time: "",
         bat_icon: "battery_0_bar",
+        wisp_icn: "signal_wifi_4_bar",
     });
 
     rounded = rule`
@@ -72,14 +74,8 @@ class Taskbar {
             </nav>
             <div id="taskinfo-container">
                 <div class="flex flexcenter">
-                    <span
-                        id="settings-icn"
-                        on:click={() => {
-                            anura.apps["anura.settings"].open();
-                        }}
-                        class="material-symbols-outlined"
-                    >
-                        settings
+                    <span class="material-symbols-outlined">
+                        {use(this.state.wisp_icn)}
                     </span>
 
                     <span class="material-symbols-outlined">
@@ -264,6 +260,17 @@ class Taskbar {
                 this.state.bat_icon = `battery_${bat_bars}_bar`;
             });
         }
+
+        setInterval(() => {
+            const ws = new WebSocket(anura.wsproxyURL);
+            ws.onopen = () => {
+                this.state.wisp_icn = "signal_wifi_4_bar";
+                ws.close();
+            };
+            ws.onerror = () => {
+                this.state.wisp_icn = "signal_wifi_bad";
+            };
+        }, 1000);
     }
     addShortcut(app: App) {
         // const shortcut = new Shortcut(app);

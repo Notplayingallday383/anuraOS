@@ -88,10 +88,8 @@ nav li {
     padding: 5px 0;
     width: 150px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-
     z-index: 10000;
     overflow: hidden;
-
     backdrop-filter: blur(20px);
     padding: 0;
     border-radius: 10px;
