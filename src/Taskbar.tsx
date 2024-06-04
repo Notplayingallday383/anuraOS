@@ -406,8 +406,12 @@ class Taskbar {
                             }}
                         >
                             <span>{use(this.state.time)}</span>
-                            <span class="material-symbols-outlined">
+                            <span class="material-symbols-outlined" on:click={() => {
+                                // TODO Add Wisp Selector Menu
+                            }}>
                                 {use(this.state.net_icon)}
+                            </span>
+                            <span class="material-symbols-outlined">
                                 {use(this.state.bat_icon)}
                             </span>
                             <span>
