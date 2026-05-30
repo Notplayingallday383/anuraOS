@@ -2,7 +2,7 @@
 
 // was a workaround for a firefox quirk where crossOriginIsolated
 // is not reported properly in a service worker, now its just assumed for
-// compatibility with UV
+// compatibility with the Scramjet controller
 Object.defineProperty(globalThis, "crossOriginIsolated", {
 	value: true,
 	writable: false,
@@ -737,19 +737,19 @@ workbox.routing.registerRoute(
 	},
 );
 
-importScripts("./uv/uv.bundle.js");
-importScripts("./uv/uv.config.js");
-importScripts("./uv/uv.sw.js");
-
-const uv = new UVServiceWorker();
+importScripts("/sj-control/controller.sw.js");
 
 const methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "OPTIONS", "PATCH"];
 
 methods.forEach((method) => {
 	workbox.routing.registerRoute(
 		/\/service\//,
-		async (event) => {
-			return await uv.fetch(event);
+		async ({ event }) => {
+			console.log("Got SJ req");
+			if ($scramjetController.shouldRoute(event)) {
+				return await $scramjetController.route(event);
+			}
+			return fetch(event.request);
 		},
 		method,
 	);

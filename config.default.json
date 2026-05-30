@@ -21,6 +21,7 @@
 	"defaultsettings": {
 		"use-sw-cache": false,
 		"applist": ["anura.browser", "anura.settings", "anura.fsapp"],
+		"transport": "Anura BCC",
 		"clampWindows": true,
 		"launcher-keybind": true,
 		"relay-url": "wss://relay.widgetry.org/"

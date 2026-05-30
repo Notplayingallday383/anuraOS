@@ -26,7 +26,7 @@
   - JS Framework - [dreamland.js](https://github.com/MercuryWorkshop/dreamlandjs)
   - TCP Networking support [wisp-server-node](https://github.com/MercuryWorkshop/wisp-server-node)
   - x86 Emulation - [v86](https://copy.sh/v86/)
-  - Service worker web proxy - [Ultraviolet](https://github.com/titaniumnetwork-dev/Ultraviolet)
+  - Service worker web proxy - [Scramjet](https://github.com/MercuryWorkshop/scramjet)
   - Material Components - [Matter CSS](https://github.com/finnhvman/matter)
   - Default networking stack- [libcurl.js with WolfSSL](https://github.com/ading2210/libcurl.js)
   - A full list of dependencies can be found [here](https://github.com/MercuryWorkshop/anuraOS/network/dependencies)

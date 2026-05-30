@@ -32,7 +32,7 @@ submodules: .gitmodules
 #   build/libs/<libname>/<bundle>.min.js.map
 #   build/libs/<libname>/version (contains version number as JSON string, e.g. "1.2.3")
 
-external-libs: build/libs/filer/filer.min.js build/libs/mime/mime.iife.js build/libs/nfsadapter/nfsadapter.js build/libs/comlink/comlink.min.mjs build/libs/workbox/version build/libs/idb-keyval/idb-keyval.js build/libs/fflate/browser.js bin/chimerix.ajs build/libs/libcurl/version build/libs/bare-mux/bare.cjs build/uv/uv.bundle.js build/libs/dreamland/all.js
+external-libs: build/libs/filer/filer.min.js build/libs/mime/mime.iife.js build/libs/nfsadapter/nfsadapter.js build/libs/comlink/comlink.min.mjs build/libs/workbox/version build/libs/idb-keyval/idb-keyval.js build/libs/fflate/browser.js bin/chimerix.ajs build/libs/libcurl/version build/libs/bare-mux/bare.cjs build/scram/scramjet.js build/sj-control/controller.sw.js build/libs/dreamland/all.js
 	mkdir -p build/libs/
 	
 build/libs/libcurl/version: build/bootstrap
@@ -86,17 +86,15 @@ build/libs/bare-mux/bare.cjs: build/bootstrap
 	cp node_modules/@mercuryworkshop/bare-mux/dist/bare.cjs.map build/libs/bare-mux/bare.cjs.map
 	jq '.version' node_modules/@mercuryworkshop/bare-mux/package.json > build/libs/bare-mux/version
 
-build/uv/uv.bundle.js: build/bootstrap
-	mkdir -p build/uv
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.bundle.js build/uv/uv.bundle.js
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.bundle.js.map build/uv/uv.bundle.js.map
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.client.js build/uv/uv.client.js
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.client.js.map build/uv/uv.client.js.map
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.handler.js build/uv/uv.handler.js
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.handler.js.map build/uv/uv.handler.js.map
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.sw.js build/uv/uv.sw.js
-	cp node_modules/@titaniumnetwork-dev/ultraviolet/dist/uv.sw.js.map build/uv/uv.sw.js.map
-	jq '.version' node_modules/@titaniumnetwork-dev/ultraviolet/package.json > build/uv/version
+build/scram/scramjet.js: build/bootstrap
+	mkdir -p build/scram
+	cp -r node_modules/@mercuryworkshop/scramjet/dist/* build/scram/
+	jq '.version' node_modules/@mercuryworkshop/scramjet/package.json > build/scram/version
+
+build/sj-control/controller.sw.js: build/bootstrap
+	mkdir -p build/sj-control
+	cp -r node_modules/@mercuryworkshop/scramjet-controller/dist/* build/sj-control/
+	jq '.version' node_modules/@mercuryworkshop/scramjet-controller/package.json > build/sj-control/version
 
 build/libs/fflate/browser.js: build/bootstrap
 	mkdir -p build/libs/fflate
@@ -154,7 +152,7 @@ build/lib/v86.wasm: $(RUST_FILES) v86/build/softfloat.o v86/build/zstddeclib.o v
 	cp v86/build/v86.wasm build/lib/v86.wasm
 
 build/cache-load.json: FORCE
-	(find apps/ -type f && cd build/ && find lib/ -type f && find libs/ -type f && find uv/ -type f && find assets/ -type f && find bundle.css -type f && cd ../public/ && find . -type f)| grep -v -e node_modules -e \.map -e \.d\.ts -e "/\." -e "uv/" -e "workbox/" | jq -Rnc '[inputs]' > build/cache-load.json
+	(find apps/ -type f && cd build/ && find lib/ -type f && find libs/ -type f && find scram/ -type f && find sj-control/ -type f && find assets/ -type f && find bundle.css -type f && cd ../public/ && find . -type f)| grep -v -e node_modules -e \.map -e \.d\.ts -e "/\." -e "scram/" -e "sj-control/" -e "workbox/" | jq -Rnc '[inputs]' > build/cache-load.json
 
 public/config.json:
 	cp config.default.json public/config.json

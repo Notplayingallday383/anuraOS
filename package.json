@@ -14,9 +14,10 @@
 	},
 	"homepage": "https://github.com/MercuryWorkshop/AnuraOS#readme",
 	"dependencies": {
-		"@mercuryworkshop/bare-mux": "^1.1.4",
+		"@mercuryworkshop/proxy-transports": "^1.0.2",
+		"@mercuryworkshop/scramjet": "http://cdn.terbiumon.top/new_scramjet-2.0.2.tgz",
+		"@mercuryworkshop/scramjet-controller": "http://cdn.terbiumon.top/scram_controller-0.0.9.tgz",
 		"@mercuryworkshop/wisp-js": "^0.4.1",
-		"@titaniumnetwork-dev/ultraviolet": "3.1.5",
 		"autoprefixer": "^10.4.22",
 		"comlink": "^4.4.2",
 		"fflate": "^0.8.2",

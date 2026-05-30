@@ -63,6 +63,10 @@ class Settings {
 			initial["disable-regedit-warning"] = false;
 		}
 
+		if (initial["transport"] !== "Anura BCC") {
+			initial["transport"] = "Anura BCC";
+		}
+
 		try {
 			const raw = await fs.promises.readFile("/anura_settings.json");
 			// This Uint8Array is actuallly a buffer, so JSON.parse can handle it

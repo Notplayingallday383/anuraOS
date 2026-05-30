@@ -29,7 +29,6 @@ export default [
 			"public/lib/",
 			"documentation/templates",
 			"public/lib/html-to-image.min.js",
-			"public/uv/",
 			"**/static/",
 			"**/chimerix/",
 			"**/dreamlandjs/",
